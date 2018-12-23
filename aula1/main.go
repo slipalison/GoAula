@@ -1,5 +1,5 @@
 /*
-	go rum main.go
+	go run main.go
 	go build main.go
 */
 
