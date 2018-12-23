@@ -205,6 +205,5 @@ func somaConStr(num1, num2 int) (int, string) {
 }
 
 func printSlice(s string, x []int) {
-	fmt.Printf("%s len=%d cap=%d %v\n",
-		s, len(x), cap(x), x)
+	fmt.Printf("%s len=%d cap=%d %v\n", s, len(x), cap(x), x)
 }
