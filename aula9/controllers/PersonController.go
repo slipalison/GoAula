@@ -9,11 +9,13 @@ import (
 
 // GetPeople busca as pessoas
 func GetPeople(w http.ResponseWriter, r *http.Request) {
+	montLista()
 	json.NewEncoder(w).Encode(people)
 }
 
 // GetPerson busca
 func GetPerson(w http.ResponseWriter, r *http.Request) {
+	montLista()
 	params := mux.Vars(r)
 	for _, item := range people {
 		if item.ID == params["id"] {
@@ -26,6 +28,7 @@ func GetPerson(w http.ResponseWriter, r *http.Request) {
 
 // CreatePerson cria um novo contato
 func CreatePerson(w http.ResponseWriter, r *http.Request) {
+	montLista()
 	params := mux.Vars(r)
 	var person Person
 	_ = json.NewDecoder(r.Body).Decode(&person)
@@ -36,6 +39,7 @@ func CreatePerson(w http.ResponseWriter, r *http.Request) {
 
 // DeletePerson deleta um contato
 func DeletePerson(w http.ResponseWriter, r *http.Request) {
+	montLista()
 	params := mux.Vars(r)
 	for index, item := range people {
 		if item.ID == params["id"] {
@@ -44,6 +48,17 @@ func DeletePerson(w http.ResponseWriter, r *http.Request) {
 		}
 		json.NewEncoder(w).Encode(people)
 	}
+}
+
+func montLista() {
+
+	if len(people) < 1 {
+
+		people = append(people, Person{ID: "1", Firstname: "John", Lastname: "Doe", Address: &Address{City: "City X", State: "State X"}})
+		people = append(people, Person{ID: "2", Firstname: "Koko", Lastname: "Doe", Address: &Address{City: "City Z", State: "State Y"}})
+		people = append(people, Person{ID: "3", Firstname: "Francis", Lastname: "Sunday"})
+	}
+
 }
 
 type Person struct {
