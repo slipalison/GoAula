@@ -8,18 +8,33 @@ package main
 import "fmt"
 
 func main() {
+	separador("- Variables")
 	Variable()
-	condisions()
-	loop()
+
+	separador("- Conditions")
+	conditions()
+
+	separador("- Functions and returns")
 	fmt.Println("resultado da soma é:", soma(2, 3))
 	num, str := somaConStr(2, 3)
 	fmt.Println(num)
 	fmt.Println(str)
+
+	separador("- Collections")
 	Collections()
+
+	separador("- Loops")
+	loop()
 
 	fmt.Println("Fim")
 }
 
+func separador(valor string) {
+	fmt.Println("")
+	fmt.Println("")
+	fmt.Println(valor, "************************************************************************")
+	fmt.Println("")
+}
 func Variable() {
 	//formas de declarar variaveis
 	var name string = "Alison"
@@ -44,7 +59,7 @@ func Variable() {
 	fmt.Println(num2 * num1)
 }
 
-func condisions() {
+func conditions() {
 	b := 3
 	if b > 1 {
 		fmt.Printf("%v é o valor da variavel\n", b)
@@ -64,38 +79,6 @@ func condisions() {
 	default:
 		fmt.Println("valor não encontrado")
 	}
-}
-
-func loop() {
-	num := 3
-	// tudo é for!
-	// while
-	for num > 0 {
-		fmt.Printf("While %v\n", num)
-		num--
-	}
-
-	//for
-	for n := 0; n < 3; n++ {
-		fmt.Println("for...")
-	}
-
-	// Do While
-	n := 1
-	for ok := true; ok; ok = n > 0 {
-		fmt.Println("Do While")
-		n--
-	}
-}
-
-//funçao com retorno
-func soma(num1, num2 int) int {
-	return num1 + num2
-}
-
-//funçao com mais de 1 retorno
-func somaConStr(num1, num2 int) (int, string) {
-	return num1 + num2, "fez a soma e retornou uma string"
 }
 
 //Collections
@@ -161,6 +144,64 @@ func Collections() {
 	fmt.Println(sl)
 	printSlice("sl2", sl2)
 
+}
+
+func loop() {
+	num := 3
+	// tudo é for!
+	// while
+	for num > 0 {
+		fmt.Printf("While %v\n", num)
+		num--
+	}
+
+	//for
+	for n := 0; n < 3; n++ {
+		fmt.Println("for...")
+	}
+
+	// Do While
+	n := 1
+	for ok := true; ok; ok = n > 0 {
+		fmt.Println("Do While")
+		n--
+	}
+
+	arr := [...]int{1, 2, 3}
+	//foreach index, value, colocase _ para ignorar o valor
+	for index, value := range arr {
+		fmt.Println(index, value)
+	}
+
+	user := map[string]string{
+		"name": "Alison",
+		"nick": "Slipalison",
+	}
+	languages := []string{
+		"Go",
+		"JS",
+		"C#",
+		"Python",
+		"Elixir",
+	}
+
+	for key, value := range user {
+		fmt.Printf("O campo \"%s\" tem o valor igual a \"%s\"\n", key, value)
+	}
+
+	for _, value := range languages {
+		fmt.Println(value)
+	}
+}
+
+//funçao com retorno
+func soma(num1, num2 int) int {
+	return num1 + num2
+}
+
+//funçao com mais de 1 retorno
+func somaConStr(num1, num2 int) (int, string) {
+	return num1 + num2, "fez a soma e retornou uma string"
 }
 
 func printSlice(s string, x []int) {
