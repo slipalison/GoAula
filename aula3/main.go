@@ -15,7 +15,7 @@ func (l List) Show() {
 	fmt.Println(l)
 }
 
-// inicia de forma imutavel
+// inicializa de forma imutavel
 func (l List) Init() List {
 	l = []interface{}{
 		"Alison",
@@ -26,6 +26,7 @@ func (l List) Init() List {
 	return l
 }
 
+// inicializa como ponteiro
 func (l *List) InitCursor() {
 	*l = []interface{}{
 		"Alison2",
